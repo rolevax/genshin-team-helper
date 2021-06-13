@@ -1,6 +1,7 @@
 <template>
   <div :style="{ width: pageWidth, margin: '0 auto'}">
     <h1>原神大地图配队助手</h1>
+    <el-divider>喵打出品，都是垃圾</el-divider>
     <h2>输入你需要的功能，结合 BOX 与 XP，自动计算配队方案</h2>
     <MainForm />
   </div>

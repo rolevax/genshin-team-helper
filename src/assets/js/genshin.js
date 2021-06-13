@@ -16,8 +16,9 @@ export const names = {
     "ganyu": "甘雨", "rosaria": "罗莎莉亚", "eula": "优菈",
     "jean": "琴", "sucrose": "砂糖", "venti": "温迪", "xiao": "魈",
     "kazuha": "枫原万叶", "traveler(anemo)": "旅行者（风）",
-    "ningguang": "凝光", "noeele": "诺艾尔", "zhongli": "钟离", "albedo": "阿贝多",
+    "ningguang": "凝光", "noelle": "诺艾尔", "zhongli": "钟离", "albedo": "阿贝多",
     "traveler(geo)": "旅行者（岩）",
+    "sayu": "早柚",
 }
 
 export const elements = {

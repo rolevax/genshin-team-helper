@@ -12,6 +12,18 @@ export const single = {
     amCryoShield: GS.elements.pyro.concat(GS.elements.electro),
     amPyroShield: GS.elements.hydro.concat(GS.elements.electro),
     amHydroShield: GS.elements.cryo.concat(GS.elements.electro),
+    fatuiCryoShield: GS.elements.pyro,
+    fatuiPyroShield: GS.elements.hydro,
+    fatuiElectroShield: GS.elements.cryo,
+    electroHypostasis: GS.elements.pyro.concat(GS.elements.cryo),
+    tree: GS.weapons.sword.concat(GS.weapons.claymore, GS.weapons.polearm),
+    dandelion: GS.elements.anemo,
+    flamingFlower: GS.elements.hydro.concat(GS.elements.cryo),
+    mistFlower: GS.elements.pyro,
+    electroCrystal: GS.elements.pyro,
+    crystalCore: [ "sayu" ],
+    mine: GS.weapons.claymore.concat([ "zhongli", "ningguang", "klee" ]),
+    fowl: [ "ganyu" ]
 }
 
 function checkSingle(usage, team) {
@@ -40,7 +52,7 @@ function removeSuperSets(teams) {
     }
 }
 
-export function getRequiredTeams(usages, box, jobplace) {
+function getRequiredTeams(usages, box, jobplace) {
     if (usages.length == 0) {
         return [[]] // a result which includes one team that has no required character
     }
@@ -68,4 +80,9 @@ export function getRequiredTeams(usages, box, jobplace) {
 
     removeSuperSets(teams)
     return teams
+}
+
+export function getRequiredTeamsWithXp(usages, box, xp) {
+    usages = usages.filter(u => !checkSingle(u, xp))
+    return getRequiredTeams(usages, box, 4 - xp.length).map(team => xp.concat(team))
 }
