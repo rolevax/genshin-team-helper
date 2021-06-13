@@ -1,23 +1,32 @@
 <template>
-  <img src="./assets/logo.png">
-  <div>
-    <p>
-      If Element Plus is successfully added to this project, you'll see an
-      <code v-text="'<el-button>'"></code>
-      below
-    </p>
-    <el-button type="primary">el-button</el-button>
+  <div :style="{ width: pageWidth, margin: '0 auto'}">
+    <h1>原神功能性配队助手</h1>
+    <MainForm />
   </div>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainForm from './components/MainForm.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainForm
+  },
+  data: function() {
+    return {
+      'pageWidth': '100%',
+    }
+  },
+  mounted: function() {
+    if (!this.isMobile()) {
+      this.pageWidth = '720px'
+    }
+  },
+  methods: {
+    isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    }
   }
 }
 </script>
@@ -30,5 +39,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  margin: 0 auto;
 }
 </style>
