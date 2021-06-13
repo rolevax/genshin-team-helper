@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>选择你需要的功能，自动计算配队方案</h2>
     <el-form refs="form" :model="form" label-width="80px">
       <el-checkbox-group v-model="form.usages">
         <el-form-item label="单体跑图">
@@ -28,7 +27,7 @@
           <!-- <el-checkbox label="">五香岩</el-checkbox> -->
         </el-form-item>
       </el-checkbox-group>
-      <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse>
         <el-collapse-item title="拥有用色及 XP 设置">
           <el-form-item label="拥有角色">
             <el-checkbox-group v-model="form.box">
@@ -48,10 +47,10 @@
         </el-collapse-item>
       </el-collapse>
     </el-form>
-    <pre style="text-align: left;">{{ form.usages }}</pre>
+    <!-- <pre style="text-align: left;">{{ form.usages }}</pre> -->
     <h2>计算结果</h2>
     <template v-if="results === []">
-      没有满足全部功能的方案
+      没有满足全部功能的配队
     </template>
     <template v-else>
       <pre style="text-align: left;">{{ results }}</pre>
@@ -77,46 +76,10 @@ export default {
     }
   },
   methods: {
-    checkSimple(usage, team) {
-      var sols = Sol.single[usage]
-      return team.some(girl => sols.includes(girl))
-    },
-    provideSimple(usage, box) {
-      var sols = Sol.single[usage]
-      return sols.filter(girl => box.includes(girl))
-    },
-    crossProduct(usages, box, jobplace) {
-      if (usages.length == 0) {
-        return [ [] ] // a result which includes one team that has no required character
-      }
-
-      if (jobplace <= 0) {
-        return [] // has job, no place
-      }
-
-      var usage = usages[0]
-      var restUsages = usages.slice(1)
-      var cands = this.provideSimple(usage, box)
-      if (cands.length == 0) {
-        return [] // no girl to satisfy usage
-      }
-
-      var restBoxes = cands.map(cand => box.filter(b => b !== cand))
-
-      var teams = []
-      for (var i = 0; i < cands.length; i++) {
-        var cand = cands[i]
-        var restMissing = restUsages.filter(u => !this.checkSimple(u, [ cand ]))
-        var nextTeams = this.crossProduct(restMissing, restBoxes[i], jobplace - 1)
-        teams = teams.concat(nextTeams.map(t => t.concat(cand)))
-      }
-
-      return teams
-    }
   },
   computed: {
     results() {
-      return this.crossProduct(this.form.usages, this.form.box, 4)
+      return Sol.getRequiredTeams(this.form.usages, this.form.box, 4)
     }
   }
 }
