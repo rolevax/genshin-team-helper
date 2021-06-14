@@ -52,6 +52,40 @@ function removeSuperSets(teams) {
     }
 }
 
+function sortedTeamEqual(t1, t2) {
+    return compareSortedTeam(t1, t2) === 0
+}
+
+function compareSortedTeam(t1, t2) {
+    let lengthDiff = t1.length - t2.length
+    if (lengthDiff != 0) {
+        return lengthDiff
+    }
+
+    for (let i = 0; i < t1.length; i++) {
+        if (t1[i] < t2[i]) {
+            return -1
+        }
+
+        if (t1[i] > t2[i]) {
+            return 1
+        }
+    }
+
+    return 0
+}
+
+function sortAndDistinct(teams) {
+    teams.forEach(t => t.sort())
+    teams.sort(compareSortedTeam)
+    for (let i = 1; i < teams.length; i++) {
+        if (sortedTeamEqual(teams[i], teams[i - 1])) {
+            teams.splice(i, 1)
+            i--
+        }
+    }
+}
+
 function getRequiredTeams(usages, box, jobplace) {
     if (usages.length == 0) {
         return [[]] // a result which includes one team that has no required character
@@ -84,5 +118,7 @@ function getRequiredTeams(usages, box, jobplace) {
 
 export function getRequiredTeamsWithXp(usages, box, xp) {
     usages = usages.filter(u => !checkSingle(u, xp))
-    return getRequiredTeams(usages, box, 4 - xp.length).map(team => xp.concat(team))
+    let teamsNoXp = getRequiredTeams(usages, box, 4 - xp.length)
+    sortAndDistinct(teamsNoXp)
+    return teamsNoXp.map(team => xp.concat(team))
 }

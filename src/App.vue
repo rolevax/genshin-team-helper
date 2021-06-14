@@ -1,10 +1,11 @@
 <template>
   <div :style="{ width: pageWidth, margin: '0 auto'}">
     <h1>原神大地图配队助手（开发中）</h1>
+    更新于 2021-06-14
     <el-divider></el-divider>
     <h3>输入你需要的功能，结合 BOX 与 XP，自动计算配队方案</h3>
     <MainForm />
-    <el-divider>喵打出品，都是垃圾</el-divider>
+    <el-divider style="margin-top: 64px;">喵打出品，都是垃圾</el-divider>
     <a href="https://github.com/rolevax/genshin-team-helper" target="_blank"><img src="./assets/GitHub-Mark-32px.png"></a>
   </div>
 </template>
