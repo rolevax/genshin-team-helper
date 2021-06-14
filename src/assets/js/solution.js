@@ -1,10 +1,63 @@
 import * as GS from "./genshin.js"
 
+export const usagesNav = {
+    iceSea: "凝冰渡海",
+    tall: "腿长",
+    happyClimb: "快乐爬山",
+    short: "钻小洞",
+}
+
+export const usagesCombat = {
+    shield: "一键上盾",
+    heal: "奶妈",
+    shootHigh: "高台对狙",
+    happyPick: "快乐捡掉落",
+    amCryoShield: "深渊法师冰盾",
+    amPyroShield: "深渊法师火盾",
+    amHydroShield: "深渊法师水盾",
+    fatuiCryoShield: "愚人众冰盾",
+    fatuiPyroShield: "愚人众火盾",
+    fatuiElectroShield: "愚人众雷盾",
+    electroHypostasis: "五香雷",
+    // hili shields
+}
+
+export const usagesMaterial = {
+    tree: "砍树",
+    dandelion: "蒲公英",
+    flamingFlower: "烈焰花",
+    mistFlower: "冰雾花",
+    electroCrystal: "电气水晶",
+    crystalCore: "晶碟",
+    mine: "挖矿",
+    fowl: "收鸽子",
+    coldPig: "冷鲜肉",
+}
+
+export const usagesPuzzle = {
+    manhole: "压力板",
+    windmill: "风车机关",
+    lighter: "点火把",
+    gushaChest: "草箱子",
+    sadaChest: "岩箱子",
+    lataChest: "冰箱子",
+    bigRocks: "藏在石头后面的那啥",
+    smallRocks: "小石堆",
+    anemoSeed: "快速触发风种子",
+    geoSeed: "岩种子",
+    shootBomb: "射炸药桶",
+    pengpeng: "蓬蓬果",
+}
+
+const geoBreakers = GS.weapons.claymore.concat([ "zhongli", "ningguang", "klee" ])
+
 export const single = {
+    // nav
     iceSea: [ "kaeya" ],
     tall: [ "diluc", "tartaglia" , "kaeya", "zhongli" ],
     happyClimb: [ "venti", "keqing" ],
     short: [ "diona", "klee", "qiqi" ],
+    // combat
     shield: [ "xinyan", "diona", "zhongli" ],
     heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle" ],
     shootHigh: GS.weapons.bow,
@@ -16,14 +69,29 @@ export const single = {
     fatuiPyroShield: GS.elements.hydro,
     fatuiElectroShield: GS.elements.cryo,
     electroHypostasis: GS.elements.pyro.concat(GS.elements.cryo),
+    // material
     tree: GS.weapons.sword.concat(GS.weapons.claymore, GS.weapons.polearm),
     dandelion: GS.elements.anemo,
     flamingFlower: GS.elements.hydro.concat(GS.elements.cryo),
     mistFlower: GS.elements.pyro,
     electroCrystal: GS.elements.pyro,
     crystalCore: [ "sayu" ],
-    mine: GS.weapons.claymore.concat([ "zhongli", "ningguang", "klee" ]),
-    fowl: [ "ganyu" ]
+    mine: geoBreakers,
+    fowl: [ "ganyu" ],
+    coldPig: GS.elements.pyro,
+    // puzzle
+    manhole: [ "traveler(geo)", "zhongli" ],
+    windmill: GS.elements.anemo,
+    lighter: GS.elements.pyro,
+    gushaChest: GS.elements.pyro,
+    sadaChest: geoBreakers,
+    lataChest: GS.elements.pyro,
+    bigRocks: geoBreakers,
+    smallRocks: geoBreakers,
+    anemoSeed: GS.elements.anemo,
+    geoSeed: geoBreakers,
+    shootBomb: GS.weapons.bow,
+    pengpeng: GS.weapons.bow,
 }
 
 function checkSingle(usage, team) {

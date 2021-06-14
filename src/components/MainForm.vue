@@ -3,41 +3,19 @@
     <el-form refs="form" :model="form" label-width="80px" style="text-align: left;">
       <el-checkbox-group v-model="form.usages">
         <el-form-item label="单体跑图">
-          <el-checkbox label="iceSea">凝冰渡海</el-checkbox>
-          <el-checkbox label="tall">腿长</el-checkbox>
-          <el-checkbox label="happyClimb">快乐爬山</el-checkbox>
-          <el-checkbox label="short">钻小洞</el-checkbox>
+          <el-checkbox v-for="(text, key) in usagesNav" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
         <el-form-item label="单体战斗">
-          <el-checkbox label="shield">一键上盾</el-checkbox>
-          <el-checkbox label="heal">奶妈</el-checkbox>
-          <el-checkbox label="shootHigh">高台对狙</el-checkbox>
-          <el-checkbox label="happyPick">快乐捡掉落</el-checkbox>
-          <el-checkbox label="amCryoShield">深渊法师冰盾</el-checkbox>
-          <el-checkbox label="amPyroShield">深渊法师火盾</el-checkbox>
-          <el-checkbox label="amHydroShield">深渊法师水盾</el-checkbox>
-          <!-- <el-checkbox label="pyro">丘丘人木盾</el-checkbox>
-          <el-checkbox label="cryo">丘丘人冰盾 </el-checkbox>
-          <el-checkbox label="">丘丘人岩盾</el-checkbox> -->
-          <el-checkbox label="fatuiCryoShield">愚人众冰盾</el-checkbox>
-          <el-checkbox label="fatuiPyroShield">愚人众火盾</el-checkbox>
-          <!-- <el-checkbox label="">愚人众岩盾</el-checkbox> -->
-          <el-checkbox label="fatuiElectroShield">愚人众雷盾</el-checkbox>
-          <el-checkbox label="electroHypostasis">五香雷</el-checkbox>
-          <!-- <el-checkbox label="">五香岩</el-checkbox> -->
+          <el-checkbox v-for="(text, key) in usagesCombat" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
         <el-form-item label="采集">
-          <el-checkbox label="tree">砍树</el-checkbox>
-          <el-checkbox label="dandelion">蒲公英</el-checkbox>
-          <el-checkbox label="flamingFlower">烈焰花</el-checkbox>
-          <el-checkbox label="mistFlower">冰雾花</el-checkbox>
-          <el-checkbox label="electroCrystal">电气水晶</el-checkbox>
-          <el-checkbox label="crystalCore">晶碟</el-checkbox>
-          <el-checkbox label="mine">挖矿</el-checkbox>
-          <el-checkbox label="fowl">收鸽子</el-checkbox>
+          <el-checkbox v-for="(text, key) in usagesMaterial" :key="key" :label="key">{{ text }}</el-checkbox>
+        </el-form-item>
+        <el-form-item label="解密挑战">
+          <el-checkbox v-for="(text, key) in usagesPuzzle" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
       </el-checkbox-group>
-      <el-collapse>
+      <el-collapse accordion>
         <el-collapse-item title="拥有用色及 XP 设置">
           <el-form-item label="拥有角色">
             <el-checkbox-group v-model="form.box">
@@ -54,6 +32,12 @@
             <el-checkbox-group v-model="form.xp" :max="4">
               <el-checkbox v-for="c in form.box" :key="c" :label="c">{{ names[c] }}</el-checkbox>
             </el-checkbox-group>
+          </el-form-item>
+        </el-collapse-item>
+        <el-collapse-item title="痛苦度设置 (2018 comming soom)">
+          <el-form-item label="操作">
+            <el-checkbox disabled>接受单手剑挖矿</el-checkbox>
+            <el-checkbox disabled>接受甘雨凝冰渡海</el-checkbox>
           </el-form-item>
         </el-collapse-item>
       </el-collapse>
@@ -82,6 +66,10 @@ export default {
     return {
       elements: GS.elements,
       names: GS.names,
+      usagesNav: Sol.usagesNav,
+      usagesCombat: Sol.usagesCombat,
+      usagesMaterial: Sol.usagesMaterial,
+      usagesPuzzle: Sol.usagesPuzzle,
       form: {
         usages: [],
         box: GS.all.filter(() => true),
