@@ -15,6 +15,11 @@
           <el-checkbox v-for="(text, key) in usagesPuzzle" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
       </el-checkbox-group>
+      <el-checkbox-group v-model="form.coopUsages">
+        <el-form-item label="元素共鸣">
+          <el-checkbox label="doubleWind">双风</el-checkbox>
+        </el-form-item>
+      </el-checkbox-group>
       <el-collapse accordion>
         <el-collapse-item title="拥有用色及 XP 设置">
           <el-form-item label="拥有角色">
@@ -56,7 +61,7 @@
     <!-- <pre style="text-align: left;">{{ form.xp }}</pre> -->
     <h2>计算结果</h2>
     <template v-if="teams.length === 0">
-      没有满足全部功能的配队
+      没有满足全部功能的配队，请适当取舍
     </template>
     <template v-else>
       共 {{ teams.length }} 种方案，最少需要 {{ teams[0].length }} 名成员
@@ -83,6 +88,7 @@ export default {
       usagesPuzzle: Sol.usagesPuzzle,
       form: {
         usages: [],
+        coopUsages: [],
         box: GS.all.filter(() => true),
         xp: [],
       },

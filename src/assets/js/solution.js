@@ -2,7 +2,7 @@ import * as GS from "./genshin.js"
 
 export const usagesNav = {
     iceSea: "凝冰渡海",
-    tall: "腿长",
+    tall: "大长腿",
     happyClimb: "快乐爬山",
     short: "钻小洞",
 }
@@ -11,6 +11,7 @@ export const usagesCombat = {
     shield: "一键上盾",
     heal: "奶妈",
     shootHigh: "高台对狙",
+    shootTower: "每日拆塔",
     happyPick: "快乐捡掉落",
     vinPlataGusha: "丘丘人木盾",
     vinPlataSada: "丘丘人岩盾",
@@ -39,7 +40,8 @@ export const usagesMaterial = {
 }
 
 export const usagesPuzzle = {
-    manhole: "压力板",
+    manhole: "小压力板脱身",
+    manholeDetach: "大压力板脱身",
     windmill: "风车机关",
     lighter: "点火把",
     gushaChest: "草箱子",
@@ -47,9 +49,10 @@ export const usagesPuzzle = {
     lataChest: "冰箱子",
     bigRocks: "石墙",
     smallRocks: "小石堆",
-    anemoSeed: "快速触发风种子",
+    anemoSeed: "风种子一顶仨",
     geoSeed: "岩种子",
     shootBomb: "射炸药桶",
+    shootAnemoSlime: "射轨道风史莱姆",
     pengpeng: "蓬蓬果",
 }
 
@@ -70,6 +73,7 @@ export const single = {
     shield: [ "xinyan", "diona", "zhongli" ],
     heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle" ],
     shootHigh: GS.weapons.bow,
+    shootTower: [ "ganyu" ],
     happyPick: [ "venti" ],
     vinPlataGusha: GS.elements.pyro,
     vinPlataSada: geoBreakers,
@@ -93,7 +97,8 @@ export const single = {
     fowl: [ "ganyu" ],
     coldPig: GS.elements.pyro,
     // puzzle
-    manhole: [ "traveler(geo)", "zhongli" ],
+    manhole: [ "traveler(geo)", "zhongli", "albedo", "ningguang", "klee", "amber", "ganyu" ],
+    manholeDetach: [ "traveler(geo)", "zhongli", "klee"],
     windmill: GS.elements.anemo,
     lighter: GS.elements.pyro,
     gushaChest: GS.elements.pyro,
@@ -104,6 +109,7 @@ export const single = {
     anemoSeed: GS.elements.anemo,
     geoSeed: geoBreakers,
     shootBomb: GS.weapons.bow,
+    shootAnemoSlime: GS.weapons.bow,
     pengpeng: GS.weapons.bow,
 }
 
