@@ -19,9 +19,10 @@ export const usagesCombat = {
     amCryoShield: "深渊法师冰盾",
     amPyroShield: "深渊法师火盾",
     amHydroShield: "深渊法师水盾",
-    fatuiCryoShield: "愚人众冰盾",
-    fatuiPyroShield: "愚人众火盾",
-    fatuiElectroShield: "愚人众雷盾",
+    fatuiCryoShield: "愚人众冰甲",
+    fatuiPyroShield: "愚人众火甲",
+    fatuiElectroShield: "愚人众雷甲",
+    fatuiGeoShield: "愚人众岩甲",
     electroHypostasis: "无相之雷元素块",
     geoHypostasis: "无相之岩柱子",
     // hili shields
@@ -56,6 +57,10 @@ export const usagesPuzzle = {
     pengpeng: "蓬蓬果",
 }
 
+export const usagesResonance = {
+    doubleAnemo: "双风",
+}
+
 const geoBreakers = GS.weapons.claymore.concat(
    GS.elements.geo,
    [ "klee", "yanfei" ]
@@ -63,7 +68,7 @@ const geoBreakers = GS.weapons.claymore.concat(
 
 const frozenBreakers = geoBreakers.concat(GS.elements.pyro)
 
-export const single = {
+const single = {
     // nav
     iceSea: [ "kaeya" ],
     tall: [ "diluc", "tartaglia" , "kaeya", "zhongli" ],
@@ -84,6 +89,7 @@ export const single = {
     fatuiCryoShield: GS.elements.pyro,
     fatuiPyroShield: GS.elements.hydro,
     fatuiElectroShield: GS.elements.cryo,
+    fatuiGeoShield: geoBreakers,
     electroHypostasis: GS.elements.pyro.concat(GS.elements.cryo),
     geoHypostasis: geoBreakers,
     // material
@@ -97,8 +103,8 @@ export const single = {
     fowl: [ "ganyu" ],
     coldPig: GS.elements.pyro,
     // puzzle
-    manhole: [ "traveler(geo)", "zhongli", "albedo", "ningguang", "klee", "amber", "ganyu" ],
-    manholeDetach: [ "traveler(geo)", "zhongli", "klee"],
+    manhole: [ "traveler(geo)", "zhongli", "ningguang", "albedo", "klee", "amber", "ganyu", "mona", "fischl" ],
+    manholeDetach: [ "traveler(geo)", "zhongli", "ningguang", "albedo", "klee" ],
     windmill: GS.elements.anemo,
     lighter: GS.elements.pyro,
     gushaChest: GS.elements.pyro,
@@ -113,14 +119,46 @@ export const single = {
     pengpeng: GS.weapons.bow,
 }
 
+const doubleProviders = {
+    doubleAnemo(team, box, jobplace) {
+        let anemoCount = team.filter(g => GS.elements.anemo.includes(g)).length
+        if (anemoCount >= 2) {
+            return [ team ]
+        }
+
+        let anemoBox = box.filter(g => GS.elements.anemo.includes(g))
+        if (anemoCount == 1 && jobplace >= 1) {
+            return anemoBox.map(g => team.concat(g))
+        }
+
+        if (anemoCount == 0 && jobplace >= 2) {
+            let doubleAnemoBox = anemoBox.reduce((res, g1, i) => res.concat(anemoBox.slice(i + 1).map(g2 => [ g1, g2 ])), [])
+            return doubleAnemoBox.map(gg => team.concat(gg))
+        }
+
+        return []
+    },
+}
+
 function checkSingle(usage, team) {
     var sols = single[usage]
     return team.some(girl => sols.includes(girl))
 }
 
-function provideSingle(usage, box) {
-    var sols = single[usage]
-    return sols.filter(girl => box.includes(girl))
+function provideSingle(team, usage, box, jobplace) {
+    if (checkSingle(usage, team)) {
+        return [ team ]
+    }
+
+    if (jobplace <= 0) {
+        return []
+    }
+
+    return single[usage].filter(girl => box.includes(girl)).map(g => team.concat(g))
+}
+
+function provideDouble(team, usage, box, jobplace) {
+    return doubleProviders[usage](team, box, jobplace)
 }
 
 function removeSuperSets(teams) {
@@ -173,30 +211,29 @@ function sortAndDistinct(teams) {
     }
 }
 
-function getRequiredTeams(usages, box, jobplace) {
+function branchTeamByOneUsage(team, usage, box, jobplace) {
+    if (usage in single) {
+        return provideSingle(team, usage, box, jobplace)
+    }
+
+    return provideDouble(team, usage, box, jobplace)
+}
+
+function branchTeam(team, usages, box, jobplace) {
     if (usages.length == 0) {
-        return [[]] // a result which includes one team that has no required character
+        return [ team ] // all usages satisfied
     }
 
-    if (jobplace <= 0) {
-        return [] // has job, no place
-    }
-
-    var usage = usages[0]
-    var restUsages = usages.slice(1)
-    var cands = provideSingle(usage, box)
-    if (cands.length == 0) {
-        return [] // no girl to satisfy usage
-    }
-
-    var restBoxes = cands.map(cand => box.filter(b => b !== cand))
-
-    var teams = []
-    for (var i = 0; i < cands.length; i++) {
-        var cand = cands[i]
-        var restMissing = restUsages.filter(u => !checkSingle(u, [cand]))
-        var nextTeams = getRequiredTeams(restMissing, restBoxes[i], jobplace - 1)
-        teams = teams.concat(nextTeams.map(t => t.concat(cand)))
+    let usage = usages[0]
+    let tempTeams = branchTeamByOneUsage(team, usage, box, jobplace)
+    let restUsages = usages.slice(1)
+    let restBoxes = tempTeams.map(t => box.filter(g => !t.includes(g)))
+    let restJobplaces = tempTeams.map(t => jobplace - (t.length - team.length))
+    let teams = []
+    for (let i = 0; i < tempTeams.length; i++) {
+        let tempTeam = tempTeams[i]
+        var nextTeams = branchTeam(tempTeam, restUsages, restBoxes[i], restJobplaces[i])
+        teams = teams.concat(nextTeams)
     }
 
     removeSuperSets(teams)
@@ -204,8 +241,11 @@ function getRequiredTeams(usages, box, jobplace) {
 }
 
 export function getRequiredTeamsWithXp(usages, box, xp) {
-    usages = usages.filter(u => !checkSingle(u, xp))
-    let teamsNoXp = getRequiredTeams(usages, box, 4 - xp.length)
-    sortAndDistinct(teamsNoXp)
-    return teamsNoXp.map(team => xp.concat(team))
+    // usages = usages.filter(u => !checkDouble(u, xp)).filter(u => !checkSingle(u, xp))
+    // let teamsNoXp = getRequiredTeams(usages, box, 4 - xp.length)
+    // sortAndDistinct(teamsNoXp)
+    // return teamsNoXp.map(team => xp.concat(team))
+    let teams = branchTeam(xp, usages, box, 4 - xp.length)
+    sortAndDistinct(teams)
+    return teams
 }

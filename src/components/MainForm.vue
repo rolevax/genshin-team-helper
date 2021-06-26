@@ -8,16 +8,14 @@
         <el-form-item label="单体战斗">
           <el-checkbox v-for="(text, key) in usagesCombat" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
+        <el-form-item label="元素共鸣">
+          <el-checkbox v-for="(text, key) in usagesResonance" :key="key" :label="key">{{ text }}</el-checkbox>
+        </el-form-item>
         <el-form-item label="采集">
           <el-checkbox v-for="(text, key) in usagesMaterial" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
         <el-form-item label="解密挑战">
           <el-checkbox v-for="(text, key) in usagesPuzzle" :key="key" :label="key">{{ text }}</el-checkbox>
-        </el-form-item>
-      </el-checkbox-group>
-      <el-checkbox-group v-model="form.coopUsages">
-        <el-form-item label="元素共鸣">
-          <el-checkbox label="doubleWind">双风</el-checkbox>
         </el-form-item>
       </el-checkbox-group>
       <el-collapse accordion>
@@ -86,6 +84,7 @@ export default {
       usagesCombat: Sol.usagesCombat,
       usagesMaterial: Sol.usagesMaterial,
       usagesPuzzle: Sol.usagesPuzzle,
+      usagesResonance: Sol.usagesResonance,
       form: {
         usages: [],
         coopUsages: [],
