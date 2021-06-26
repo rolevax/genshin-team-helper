@@ -12,13 +12,17 @@ export const usagesCombat = {
     heal: "奶妈",
     shootHigh: "高台对狙",
     happyPick: "快乐捡掉落",
+    vinPlataGusha: "丘丘人木盾",
+    vinPlataSada: "丘丘人岩盾",
+    vinPlataLata: "丘丘人冰盾",
     amCryoShield: "深渊法师冰盾",
     amPyroShield: "深渊法师火盾",
     amHydroShield: "深渊法师水盾",
     fatuiCryoShield: "愚人众冰盾",
     fatuiPyroShield: "愚人众火盾",
     fatuiElectroShield: "愚人众雷盾",
-    electroHypostasis: "五香雷",
+    electroHypostasis: "无相之雷元素块",
+    geoHypostasis: "无相之岩柱子",
     // hili shields
 }
 
@@ -41,7 +45,7 @@ export const usagesPuzzle = {
     gushaChest: "草箱子",
     sadaChest: "岩箱子",
     lataChest: "冰箱子",
-    bigRocks: "藏在石头后面的那啥",
+    bigRocks: "石墙",
     smallRocks: "小石堆",
     anemoSeed: "快速触发风种子",
     geoSeed: "岩种子",
@@ -49,7 +53,12 @@ export const usagesPuzzle = {
     pengpeng: "蓬蓬果",
 }
 
-const geoBreakers = GS.weapons.claymore.concat([ "zhongli", "ningguang", "klee" ])
+const geoBreakers = GS.weapons.claymore.concat(
+   GS.elements.geo,
+   [ "klee", "yanfei" ]
+)
+
+const frozenBreakers = geoBreakers.concat(GS.elements.pyro)
 
 export const single = {
     // nav
@@ -62,13 +71,17 @@ export const single = {
     heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle" ],
     shootHigh: GS.weapons.bow,
     happyPick: [ "venti" ],
-    amCryoShield: GS.elements.pyro.concat(GS.elements.electro),
+    vinPlataGusha: GS.elements.pyro,
+    vinPlataSada: geoBreakers,
+    vinPlataLata: frozenBreakers,
+    amCryoShield: frozenBreakers.concat(GS.elements.electro),
     amPyroShield: GS.elements.hydro.concat(GS.elements.electro),
     amHydroShield: GS.elements.cryo.concat(GS.elements.electro),
     fatuiCryoShield: GS.elements.pyro,
     fatuiPyroShield: GS.elements.hydro,
     fatuiElectroShield: GS.elements.cryo,
     electroHypostasis: GS.elements.pyro.concat(GS.elements.cryo),
+    geoHypostasis: geoBreakers,
     // material
     tree: GS.weapons.sword.concat(GS.weapons.claymore, GS.weapons.polearm),
     dandelion: GS.elements.anemo,

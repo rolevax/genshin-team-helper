@@ -35,16 +35,19 @@
           </el-form-item>
         </el-collapse-item>
         <el-collapse-item title="角色细节设置（开发中）">
-          <el-form-item label="操作">
+          <el-form-item label="命座装备">
             <el-checkbox disabled>钟离六命</el-checkbox>
             <el-checkbox disabled>法师带金珀</el-checkbox>
             <el-checkbox disabled>更多选项敬请期待</el-checkbox>
           </el-form-item>
         </el-collapse-item>
         <el-collapse-item title="痛苦度设置（开发中）">
-          <el-form-item label="操作">
-            <el-checkbox disabled>接受单手剑挖矿</el-checkbox>
-            <el-checkbox disabled>接受甘雨凝冰渡海</el-checkbox>
+          <el-form-item label="操作习惯">
+            <el-checkbox disabled>单手剑挖矿</el-checkbox>
+            <el-checkbox disabled>甘雨凝冰渡海</el-checkbox>
+            <el-checkbox disabled>超载破岩</el-checkbox>
+            <el-checkbox disabled>兔兔伯爵破岩</el-checkbox>
+            <el-checkbox disabled>核爆eng破无敌盾</el-checkbox>
             <el-checkbox disabled>更多选项敬请期待</el-checkbox>
           </el-form-item>
         </el-collapse-item>
