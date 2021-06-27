@@ -177,6 +177,16 @@ function removeSuperSets(teams) {
     }
 }
 
+function removeMultipleTravelers(teams) {
+    for (let i = 0; i < teams.length; i++) {
+        let team = teams[i]
+        if (team.filter(g => g.startsWith("traveler")).length >= 2) {
+            teams.splice(i, 1)
+            i--
+        }
+    }
+}
+
 function sortedTeamEqual(t1, t2) {
     return compareSortedTeam(t1, t2) === 0
 }
@@ -246,6 +256,7 @@ export function getRequiredTeamsWithXp(usages, box, xp) {
     // sortAndDistinct(teamsNoXp)
     // return teamsNoXp.map(team => xp.concat(team))
     let teams = branchTeam(xp, usages, box, 4 - xp.length)
+    removeMultipleTravelers(teams)
     sortAndDistinct(teams)
     return teams
 }
