@@ -30,7 +30,7 @@
               <el-form-item label="岩"> <el-checkbox v-for="c in elements.geo" :key="c" :label="c">{{ names[c] }}</el-checkbox> </el-form-item>
             </el-checkbox-group>
           </el-form-item>
-          <el-form-item label="玩家XP">
+          <el-form-item label="性癖">
             选择所有必须出场的角色，最多可选 4 人。
             <el-checkbox-group v-model="form.xp" :max="4">
               <el-checkbox v-for="c in form.box" :key="c" :label="c">{{ names[c] }}</el-checkbox>
