@@ -2,10 +2,10 @@
   <div>
     <el-form refs="form" :model="form" label-width="80px" style="text-align: left;">
       <el-checkbox-group v-model="form.usages">
-        <el-form-item label="单体跑图">
+        <el-form-item label="跑图">
           <el-checkbox v-for="(text, key) in usagesNav" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
-        <el-form-item label="单体战斗">
+        <el-form-item label="战斗">
           <el-checkbox v-for="(text, key) in usagesCombat" :key="key" :label="key">{{ text }}</el-checkbox>
         </el-form-item>
         <el-form-item label="元素共鸣">
@@ -38,19 +38,25 @@
           </el-form-item>
         </el-collapse-item>
         <el-collapse-item title="角色细节设置（开发中）">
-          <el-form-item label="命座装备">
+          <el-form-item label="治疗相关">
             <el-checkbox disabled>钟离六命</el-checkbox>
             <el-checkbox disabled>法师带金珀</el-checkbox>
+            <el-checkbox disabled>行秋算奶</el-checkbox>
             <el-checkbox disabled>更多选项敬请期待</el-checkbox>
           </el-form-item>
         </el-collapse-item>
-        <el-collapse-item title="痛苦度设置（开发中）">
-          <el-form-item label="操作习惯">
-            <el-checkbox disabled>单手剑挖矿</el-checkbox>
-            <el-checkbox disabled>甘雨凝冰渡海</el-checkbox>
+        <el-collapse-item title="操作习惯（开发中）">
+          <el-form-item label="破盾相关">
+            <el-checkbox disabled>冻结持盾丘</el-checkbox>
+            <el-checkbox disabled>逆克制破元素盾</el-checkbox>
+            <el-checkbox disabled>灌伤害破元素盾</el-checkbox>
             <el-checkbox disabled>超载破岩</el-checkbox>
             <el-checkbox disabled>兔兔伯爵破岩</el-checkbox>
-            <el-checkbox disabled>核爆eng破无敌盾</el-checkbox>
+            <el-checkbox disabled>更多选项敬请期待</el-checkbox>
+          </el-form-item>
+          <el-form-item label="其它">
+            <el-checkbox disabled>单手剑挖矿</el-checkbox>
+            <el-checkbox disabled>甘雨凝冰渡海</el-checkbox>
             <el-checkbox disabled>更多选项敬请期待</el-checkbox>
           </el-form-item>
         </el-collapse-item>

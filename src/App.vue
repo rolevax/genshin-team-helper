@@ -1,7 +1,7 @@
 <template>
   <div :style="{ width: pageWidth, margin: '0 auto'}">
-    <h1>原神大地图配队助手</h1>
-    更新于 2021-06-26，同步至 1.6 可莉池
+    <h1>原神大世界配队助手</h1>
+    更新于 2021-07-03，同步至 1.6 万叶池
     <el-divider></el-divider>
     <h3>勾选你需要的功能，结合 BOX 与 XP，自动计算配队方案</h3>
     <MainForm />
