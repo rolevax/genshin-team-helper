@@ -91,7 +91,7 @@ const single = {
     happyPick: [ "venti", "kazuha" ],
     vinPlataGusha: GS.elements.pyro,
     vinPlataSada: geoBreakers,
-    vinPlataLata: frozenBreakers,
+    vinPlataLata: GS.elements.pyro,
     amCryoShield: frozenBreakers.union(GS.elements.electro),
     amPyroShield: GS.elements.hydro.union(GS.elements.electro),
     amHydroShield: GS.elements.cryo.union(GS.elements.electro),
