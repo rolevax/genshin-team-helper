@@ -61,12 +61,21 @@ export const usagesResonance = {
     doubleAnemo: "双风",
 }
 
-const geoBreakers = GS.weapons.claymore.concat(
+Object.defineProperty(Array.prototype, 'union', {
+    value: function (...arrays) {
+        return arrays.reduce((sum, a) => sum = sum.concat(a.filter(e => !sum.includes(e))), this)
+    }
+})
+
+const geoBreakers = GS.weapons.claymore.union(
    GS.elements.geo,
    [ "klee", "yanfei" ]
 )
 
-const frozenBreakers = geoBreakers.concat(GS.elements.pyro)
+const frozenBreakers = GS.elements.pyro.union(
+    GS.weapons.claymore,
+    [ "ningguang" ]
+)
 
 const single = {
     // nav
@@ -83,19 +92,19 @@ const single = {
     vinPlataGusha: GS.elements.pyro,
     vinPlataSada: geoBreakers,
     vinPlataLata: frozenBreakers,
-    amCryoShield: frozenBreakers.concat(GS.elements.electro),
-    amPyroShield: GS.elements.hydro.concat(GS.elements.electro),
-    amHydroShield: GS.elements.cryo.concat(GS.elements.electro),
+    amCryoShield: frozenBreakers.union(GS.elements.electro),
+    amPyroShield: GS.elements.hydro.union(GS.elements.electro),
+    amHydroShield: GS.elements.cryo.union(GS.elements.electro),
     fatuiCryoShield: GS.elements.pyro,
     fatuiPyroShield: GS.elements.hydro,
     fatuiElectroShield: GS.elements.cryo,
     fatuiGeoShield: geoBreakers,
-    electroHypostasis: GS.elements.pyro.concat(GS.elements.cryo),
+    electroHypostasis: GS.elements.pyro.union(GS.elements.cryo),
     geoHypostasis: geoBreakers,
     // material
-    tree: GS.weapons.sword.concat(GS.weapons.claymore, GS.weapons.polearm),
+    tree: GS.weapons.sword.union(GS.weapons.claymore, GS.weapons.polearm),
     dandelion: GS.elements.anemo,
-    flamingFlower: GS.elements.hydro.concat(GS.elements.cryo),
+    flamingFlower: GS.elements.hydro.union(GS.elements.cryo),
     mistFlower: GS.elements.pyro,
     electroCrystal: GS.elements.pyro,
     crystalCore: [ "sayu" ],
