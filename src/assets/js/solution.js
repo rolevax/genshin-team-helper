@@ -8,7 +8,7 @@ export const usagesNav = {
 }
 
 export const usagesCombat = {
-    shield: "一键上盾",
+    shield: "护盾",
     heal: "奶妈",
     shootHigh: "高台对狙",
     shootTower: "每日拆塔",
@@ -30,12 +30,12 @@ export const usagesCombat = {
 
 export const usagesMaterial = {
     tree: "砍树",
+    mine: "挖矿",
     dandelion: "蒲公英",
     flamingFlower: "烈焰花",
     mistFlower: "冰雾花",
     electroCrystal: "电气水晶",
-    crystalCore: "晶碟",
-    mine: "挖矿",
+    crystalCore: "晶蝶",
     fowl: "收鸽子",
     coldPig: "冷鲜肉",
 }
@@ -50,10 +50,10 @@ export const usagesPuzzle = {
     lataChest: "冰箱子",
     bigRocks: "石墙",
     smallRocks: "小石堆",
-    anemoSeed: "风种子一顶仨",
+    anemoSeed: "风种子",
     geoSeed: "岩种子",
     shootBomb: "射炸药桶",
-    shootAnemoSlime: "射轨道风史莱姆",
+    shootAnemoSlime: "奇怪的风史莱姆",
     pengpeng: "蓬蓬果",
 }
 
@@ -84,7 +84,7 @@ const single = {
     happyClimb: [ "venti", "keqing", "kazuha" ],
     short: [ "diona", "klee", "qiqi" ],
     // combat
-    shield: [ "xinyan", "diona", "zhongli" ],
+    shield: [ "yanfei", "xinyan", "diona", "noelle", "zhongli" ],
     heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle" ],
     shootHigh: GS.weapons.bow,
     shootTower: [ "ganyu" ],
@@ -103,12 +103,12 @@ const single = {
     geoHypostasis: geoBreakers,
     // material
     tree: GS.weapons.sword.union(GS.weapons.claymore, GS.weapons.polearm),
+    mine: geoBreakers,
     dandelion: GS.elements.anemo,
     flamingFlower: GS.elements.hydro.union(GS.elements.cryo),
     mistFlower: GS.elements.pyro,
     electroCrystal: GS.elements.pyro,
     crystalCore: [ "sayu" ],
-    mine: geoBreakers,
     fowl: [ "ganyu" ],
     coldPig: GS.elements.pyro,
     // puzzle

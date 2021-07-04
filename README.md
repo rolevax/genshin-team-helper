@@ -1,24 +1,19 @@
-# genshin-team-helper
+# 原神大地界配队助手
 
-## Project setup
+## 什么鬼
+
+这个鬼：https://rolevax.github.io/genshin-team-helper/
+
+## 许可协议
+
+没协议，仅用于学习交流。
+
+## 开发
+
+没啥说的。
+
 ```
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
 yarn serve
-```
-
-### Compiles and minifies for production
-```
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
