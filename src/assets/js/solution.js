@@ -8,7 +8,7 @@ export const usagesNav = {
 }
 
 export const usagesCombat = {
-    shield: "护盾",
+    shield: "战技盾",
     heal: "奶妈",
     shootHigh: "高台对狙",
     shootTower: "每日拆塔",
@@ -84,7 +84,7 @@ const single = {
     happyClimb: [ "venti", "keqing", "kazuha" ],
     short: [ "diona", "klee", "qiqi" ],
     // combat
-    shield: [ "yanfei", "xinyan", "diona", "noelle", "zhongli" ],
+    shield: [ "xinyan", "diona", "noelle", "zhongli" ],
     heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle" ],
     shootHigh: GS.weapons.bow,
     shootTower: [ "ganyu" ],
