@@ -44,10 +44,6 @@
             <el-checkbox disabled>行秋算奶</el-checkbox>
             <el-checkbox disabled>更多选项敬请期待</el-checkbox>
           </el-form-item>
-          <el-form-item label="护盾相关">
-            <el-checkbox disabled>烟绯不到四命</el-checkbox>
-            <el-checkbox disabled>更多选项敬请期待</el-checkbox>
-          </el-form-item>
         </el-collapse-item>
         <el-collapse-item title="操作习惯（开发中）">
           <el-form-item label="破盾相关">
