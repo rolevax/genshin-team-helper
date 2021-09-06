@@ -42,6 +42,7 @@
             <el-checkbox disabled>钟离六命</el-checkbox>
             <el-checkbox disabled>法师带金珀</el-checkbox>
             <el-checkbox disabled>行秋算奶</el-checkbox>
+            <el-checkbox disabled>满血强迫症</el-checkbox>
             <el-checkbox disabled>更多选项敬请期待</el-checkbox>
           </el-form-item>
         </el-collapse-item>
@@ -50,6 +51,7 @@
             <el-checkbox disabled>冻结持盾丘</el-checkbox>
             <el-checkbox disabled>逆克制破元素盾</el-checkbox>
             <el-checkbox disabled>灌伤害破元素盾</el-checkbox>
+            <el-checkbox disabled>扩散破水火冰雷盾</el-checkbox>
             <el-checkbox disabled>超载破岩</el-checkbox>
             <el-checkbox disabled>兔兔伯爵破岩</el-checkbox>
             <el-checkbox disabled>更多选项敬请期待</el-checkbox>

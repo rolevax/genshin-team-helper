@@ -19,13 +19,13 @@ export const usagesCombat = {
     amCryoShield: "冰法",
     amPyroShield: "火法",
     amHydroShield: "水法",
+    amElectroShield: "雷法",
     fatuiCryoShield: "冰胖",
     fatuiPyroShield: "火铳",
     fatuiElectroShield: "雷锤",
-    fatuiGeoShield: "岩枪",
+    fatuiGeoShield: "岩使",
     electroHypostasis: "无相之雷元素块",
     geoHypostasis: "无相之岩柱子",
-    // hili shields
 }
 
 export const usagesMaterial = {
@@ -38,6 +38,7 @@ export const usagesMaterial = {
     crystalCore: "晶蝶",
     fowl: "收鸽子",
     coldPig: "冷鲜肉",
+    sakura: "绯樱绣球",
 }
 
 export const usagesPuzzle = {
@@ -50,6 +51,7 @@ export const usagesPuzzle = {
     lataChest: "冰箱子",
     bigRocks: "石墙",
     smallRocks: "小石堆",
+    electroRocks: "雷石堆",
     anemoSeed: "风种子",
     geoSeed: "岩种子",
     shootBomb: "射炸药桶",
@@ -79,13 +81,13 @@ const frozenBreakers = GS.elements.pyro.union(
 
 const single = {
     // nav
-    iceSea: [ "kaeya" ],
+    iceSea: [ "kaeya", "ayaka" ],
     tall: [ "diluc", "tartaglia" , "kaeya", "zhongli" ],
     happyClimb: [ "venti", "keqing", "kazuha" ],
-    short: [ "diona", "klee", "qiqi" ],
+    short: [ "diona", "klee", "qiqi", "sayu" ],
     // combat
     shield: [ "xinyan", "diona", "noelle", "zhongli" ],
-    heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle" ],
+    heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle", "sayu" ],
     shootHigh: GS.weapons.bow,
     shootTower: [ "ganyu" ],
     happyPick: [ "venti", "kazuha" ],
@@ -95,6 +97,7 @@ const single = {
     amCryoShield: frozenBreakers.union(GS.elements.electro),
     amPyroShield: GS.elements.hydro.union(GS.elements.electro),
     amHydroShield: GS.elements.cryo.union(GS.elements.electro),
+    amElectroShield: GS.elements.pyro.union(GS.elements.cryo, GS.elements.hydro),
     fatuiCryoShield: GS.elements.pyro,
     fatuiPyroShield: GS.elements.hydro,
     fatuiElectroShield: GS.elements.cryo,
@@ -109,8 +112,9 @@ const single = {
     mistFlower: GS.elements.pyro,
     electroCrystal: GS.elements.pyro,
     crystalCore: [ "sayu" ],
-    fowl: [ "ganyu" ],
+    fowl: [ "ganyu", "sara", "aloy" ],
     coldPig: GS.elements.pyro,
+    sakura: GS.elements.electro,
     // puzzle
     manhole: [ "traveler(geo)", "zhongli", "ningguang", "albedo", "klee", "amber", "ganyu", "mona", "fischl" ],
     manholeDetach: [ "traveler(geo)", "zhongli", "ningguang", "albedo", "klee" ],
@@ -121,6 +125,7 @@ const single = {
     lataChest: GS.elements.pyro,
     bigRocks: geoBreakers,
     smallRocks: geoBreakers,
+    electroRocks: GS.elements.pyro.union(GS.elements.hydro, GS.elements.anemo, GS.elements.cryo, GS.elements.geo),
     anemoSeed: GS.elements.anemo,
     geoSeed: geoBreakers,
     shootBomb: GS.weapons.bow,

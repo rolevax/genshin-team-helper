@@ -1,7 +1,7 @@
 <template>
   <div :style="{ width: pageWidth, margin: '0 auto'}">
-    <h1>原神大世界配队助手</h1>
-    民间制作，更新于 2021-07-11，同步至 1.6 万叶池
+    <h1>原神大世界配队计算器</h1>
+    民间制作，更新于 2021-09-06，同步至 2.1 雷神池
     <el-divider></el-divider>
     <span>勾选需要的功能，结合 BOX 与 XP，自动计算配队方案</span>
     <MainForm />
