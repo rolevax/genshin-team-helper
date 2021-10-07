@@ -1,6 +1,6 @@
 export const all = [
     "amber", "bennett", "diluc", "klee", "xiangling", "xinyan", "hutao", "yanfei", "yoimiya",
-    "barbara", "mona", "xingqiu", "tartaglia",
+    "barbara", "mona", "xingqiu", "tartaglia", "kokomi",
     "beidou", "fischl", "keqing", "lisa", "raiden", "razor", "sara", "traveler(electro)",
     "aloy", "ayaka", "chongyun", "kaeya", "qiqi", "diona", "ganyu", "rosaria", "eula",
     "jean", "sucrose", "venti", "xiao", "kazuha", "sayu", "traveler(anemo)",
@@ -24,7 +24,7 @@ export const names = {
 
 export const elements = {
     pyro: ["amber", "bennett", "diluc", "klee", "xiangling", "xinyan", "hutao", "yanfei", "yoimiya"],
-    hydro: ["barbara", "mona", "xingqiu", "tartaglia"],
+    hydro: ["barbara", "mona", "xingqiu", "tartaglia", "kokomi"],
     electro: ["beidou", "fischl", "keqing", "lisa", "raiden", "razor", "sara", "traveler(electro)"],
     cryo: ["aloy", "ayaka", "chongyun", "kaeya", "qiqi", "diona", "ganyu", "rosaria", "eula"],
     anemo: ["jean", "sucrose", "venti", "xiao", "kazuha", "traveler(anemo)", "sayu"],
@@ -39,5 +39,5 @@ export const weapons = {
     claymore: ["diluc", "xinyan", "beidou", "razor", "chongyun", "eula", "noelle", "sayu"],
     polearm: ["xiangling", "hutao", "rosaria", "xiao", "zhongli", "raiden"],
     bow: ["amber", "tartaglia", "fischl", "diona", "ganyu", "venti", "yoimiya", "aloy", "sara"],
-    catalyst: ["klee", "yanfei", "barbara", "mona", "lisa", "sucrose", "ningguang"],
+    catalyst: ["klee", "yanfei", "barbara", "mona", "lisa", "sucrose", "ningguang", "kokomi"],
 }

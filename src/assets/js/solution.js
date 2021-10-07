@@ -87,7 +87,7 @@ const single = {
     short: [ "diona", "klee", "qiqi", "sayu" ],
     // combat
     shield: [ "xinyan", "diona", "noelle", "zhongli" ],
-    heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle", "sayu" ],
+    heal: [ "bennett", "barbara", "qiqi", "diona", "jean", "noelle", "sayu", "kokomi" ],
     shootHigh: GS.weapons.bow,
     shootTower: [ "ganyu" ],
     happyPick: [ "venti", "kazuha" ],
